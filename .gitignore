@@ -1,1 +1,14 @@
 .DS_Store
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Build output
+/build/
+*.zip
+
+# Local tooling
+/.wp-env.override.json
+.phpcs-cache
+*.log
