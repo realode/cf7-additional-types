@@ -1,0 +1,32 @@
+name: Deploy to WordPress.org
+
+# Publishing a GitHub release whose tag matches the plugin version (e.g. 3.0.0)
+# builds the plugin and commits it to the wordpress.org SVN repository.
+# Needs the repository secrets SVN_USERNAME and SVN_PASSWORD.
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: cf7-additional-types

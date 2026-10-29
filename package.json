@@ -22,7 +22,7 @@
 		"lint:php": "composer lint",
 		"format": "wp-scripts format src",
 		"env": "wp-env",
-		"make-pot": "wp-env run cli --env-cwd=wp-content/plugins/cf7-additional-types wp i18n make-pot . languages/cf7-additional-types.pot --exclude=node_modules,vendor,src,.wordpress-org",
+		"make-pot": "wp-env run cli --env-cwd=wp-content/plugins/cf7-additional-types wp i18n make-pot . languages/cf7-additional-types.pot --exclude=node_modules,vendor,src,bin,.wordpress-org --headers='{\"Report-Msgid-Bugs-To\":\"https://wordpress.org/support/plugin/cf7-additional-types/\"}'",
 		"make-json": "wp-env run cli --env-cwd=wp-content/plugins/cf7-additional-types wp i18n make-json languages --no-purge",
 		"plugin-zip": "npm run build && wp-scripts plugin-zip"
 	},
