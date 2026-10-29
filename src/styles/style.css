@@ -1,0 +1,702 @@
+/*
+ * CF7 Additional Types – form and field styles.
+ *
+ * Tailwind provides the spacing, type and radius scales. The theme is imported
+ * as an inline reference, so values are compiled into these selectors and no
+ * global variables, resets or cascade layers end up in the output: the styles
+ * cannot leak into the theme, and a theme that also uses Tailwind cannot
+ * change them.
+ *
+ * Every design token resolves in this order:
+ *   1. the block's design settings (--cf7at-*, set inline on the block),
+ *   2. the theme's theme.json custom settings (--wp--custom--cf7at--*),
+ *   3. the theme's color palette,
+ *   4. the surrounding text color.
+ */
+@import "tailwindcss/theme.css" theme(reference inline);
+
+/* -------------------------------------------------------------------------- */
+
+/* Tokens                                                                     */
+
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Declared on the styled form, or on a field used outside one. Fields inside
+ * a form inherit the form's tokens, including its size and style variation.
+ */
+.cf7at-form,
+:where(.cf7at-range, .cf7at-picker):not(.cf7at-form *) {
+	--_accent: var(--cf7at-accent, var(--wp--custom--cf7at--accent, var(--wp--preset--color--contrast, currentColor)));
+	--_on-accent: var(--cf7at-accent-text, var(--wp--custom--cf7at--accent-text, var(--wp--preset--color--base, #fff)));
+	--_label: var(--cf7at-label, var(--wp--custom--cf7at--label, currentColor));
+	--_text: var(--cf7at-field-text, var(--wp--custom--cf7at--field-text, currentColor));
+	--_field-bg: var(--cf7at-field-bg, var(--wp--custom--cf7at--field-background, transparent));
+	--_border: var(--cf7at-field-border, var(--wp--custom--cf7at--field-border, color-mix(in srgb, currentColor 28%, transparent)));
+	--_border-width: var(--cf7at-border-width, var(--wp--custom--cf7at--border-width, 1px));
+	--_radius: var(--cf7at-radius, var(--wp--custom--cf7at--radius, --theme(--radius-md)));
+	--_gap: var(--cf7at-gap, var(--wp--custom--cf7at--gap, --spacing(5)));
+	--_muted: color-mix(in srgb, currentcolor 8%, transparent);
+	--_error: var(--cf7at-error, var(--wp--custom--cf7at--error, #cc1818));
+	--_surface: var(--cf7at-popover-bg, var(--wp--preset--color--base, Canvas));
+	--_surface-text: var(--cf7at-popover-text, var(--wp--preset--color--contrast, CanvasText));
+	--_pad-y: 0.625em;
+	--_pad-x: 0.875em;
+	--_thumb: 1.25rem;
+}
+
+.cf7at-form.cf7at-size-small {
+	--_pad-y: 0.4em;
+	--_pad-x: 0.65em;
+	font-size: 0.925em;
+}
+
+.cf7at-form.cf7at-size-large {
+	--_pad-y: 0.85em;
+	--_pad-x: 1.1em;
+	--_thumb: 1.5rem;
+	font-size: 1.075em;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Form layout                                                                */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-form .wpcf7-form {
+	display: grid;
+	gap: var(--_gap);
+}
+
+.cf7at-form .wpcf7-form > p {
+	margin: 0;
+}
+
+.cf7at-form .wpcf7-form > .hidden-fields-container {
+	display: none;
+}
+
+.cf7at-form .wpcf7-form label {
+	display: grid;
+	gap: --spacing(1.5);
+	color: var(--_label);
+	font-weight: --theme(--font-weight-medium);
+}
+
+.cf7at-form .wpcf7-form label > br {
+	display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Text fields, selects and text areas                                        */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-form .wpcf7-form-control-wrap :is(
+	input:not([type="checkbox"], [type="radio"], [type="range"], [type="submit"], [type="hidden"], [type="file"]),
+	select,
+	textarea
+) {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	padding: var(--_pad-y) var(--_pad-x);
+	border: var(--_border-width) solid var(--_border);
+	border-radius: var(--_radius);
+	background-color: var(--_field-bg);
+	color: var(--_text);
+	font: inherit;
+	font-weight: 400;
+	line-height: 1.5;
+	box-shadow: none;
+	transition: border-color 150ms, box-shadow 150ms, background-color 150ms;
+}
+
+.cf7at-form .wpcf7-form-control-wrap :is(input, select, textarea)::placeholder {
+	color: currentcolor;
+	opacity: 0.55;
+}
+
+.cf7at-form .wpcf7-form-control-wrap textarea {
+	min-height: 8em;
+	resize: vertical;
+}
+
+.cf7at-form .wpcf7-form-control-wrap select {
+	appearance: none;
+	padding-inline-end: calc(var(--_pad-x) + 1.25em);
+	background-image:
+		linear-gradient(45deg, transparent 50%, currentcolor 50%),
+		linear-gradient(135deg, currentcolor 50%, transparent 50%);
+	background-position:
+		calc(100% - var(--_pad-x) - 5px) 50%,
+		calc(100% - var(--_pad-x)) 50%;
+	background-size: 5px 5px;
+	background-repeat: no-repeat;
+}
+
+.cf7at-form .wpcf7-form-control-wrap :is(input, select, textarea):focus-visible,
+.cf7at-form .cf7at-picker__display[aria-expanded="true"] {
+	border-color: var(--_accent);
+	outline: 2px solid var(--_accent);
+	outline-offset: -1px;
+}
+
+.cf7at-form .wpcf7-form-control-wrap :is(input, select, textarea).wpcf7-not-valid {
+	border-color: var(--_error);
+}
+
+.cf7at-form .wpcf7-not-valid-tip {
+	margin-top: --spacing(1.5);
+	color: var(--_error);
+	font-weight: 400;
+	font-size: --theme(--text-sm);
+	line-height: --theme(--text-sm--line-height);
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Checkboxes, radio buttons and acceptance                                   */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-form .wpcf7-checkbox,
+.cf7at-form .wpcf7-radio,
+.cf7at-form .wpcf7-acceptance {
+	display: flex;
+	flex-wrap: wrap;
+	gap: --spacing(2) --spacing(5);
+}
+
+.cf7at-form .wpcf7-list-item {
+	margin: 0;
+}
+
+.cf7at-form .wpcf7-list-item > label {
+	display: inline-flex;
+	align-items: center;
+	gap: --spacing(2);
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.cf7at-form .wpcf7-list-item input {
+	width: 1.125em;
+	height: 1.125em;
+	margin: 0;
+	accent-color: var(--_accent);
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Submit button                                                              */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-form .wpcf7-submit {
+	cursor: pointer;
+}
+
+/* Without the theme's button styles, the button uses the accent color. */
+.cf7at-form:not(.cf7at-theme-button) .wpcf7-submit {
+	padding: var(--_pad-y) calc(var(--_pad-x) * 1.75);
+	border: 0;
+	border-radius: var(--_radius);
+	background-color: var(--cf7at-button-bg, var(--_accent));
+	color: var(--cf7at-button-text, var(--_on-accent));
+	font: inherit;
+	line-height: 1.5;
+	transition: background-color 150ms, opacity 150ms;
+	font-weight: --theme(--font-weight-semibold);
+}
+
+.cf7at-form:not(.cf7at-theme-button) .wpcf7-submit:hover {
+	--_button-bg: var(--cf7at-button-bg, var(--_accent));
+	background-color: color-mix(in srgb, var(--_button-bg) 85%, #000);
+}
+
+.cf7at-form:not(.cf7at-theme-button) .wpcf7-submit:focus-visible {
+	outline: 2px solid var(--_accent);
+	outline-offset: 2px;
+}
+
+/*
+ * With the theme's button styles, only explicit block settings
+ * override them.
+ */
+.cf7at-form.cf7at-theme-button[style*="--cf7at-button-bg"] .wpcf7-submit {
+	background-color: var(--cf7at-button-bg);
+}
+
+.cf7at-form.cf7at-theme-button[style*="--cf7at-button-text"] .wpcf7-submit {
+	color: var(--cf7at-button-text);
+}
+
+.cf7at-form.cf7at-button-full .wpcf7-submit {
+	width: 100%;
+}
+
+.cf7at-form .wpcf7-submit:disabled {
+	cursor: progress;
+	opacity: 0.7;
+}
+
+.cf7at-form .wpcf7-response-output {
+	margin: 0;
+	padding: --spacing(3) --spacing(4);
+	border-radius: var(--_radius);
+	font-size: --theme(--text-sm);
+	line-height: --theme(--text-sm--line-height);
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Style: Filled                                                              */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-form.is-style-filled {
+	--_field-bg: var(--cf7at-field-bg, var(--wp--custom--cf7at--field-background, var(--_muted)));
+	--_border: var(--cf7at-field-border, var(--wp--custom--cf7at--field-border, transparent));
+}
+
+.cf7at-form.is-style-filled .wpcf7-form-control-wrap :is(input, select, textarea):focus-visible {
+	background-color: transparent;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Style: Underlined                                                          */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-form.is-style-underlined .wpcf7-form-control-wrap :is(
+	input:not([type="checkbox"], [type="radio"], [type="range"], [type="submit"], [type="hidden"], [type="file"]),
+	select,
+	textarea
+) {
+	padding-inline: 0;
+	border-width: 0 0 var(--_border-width);
+	border-radius: 0;
+	background-color: transparent;
+}
+
+.cf7at-form.is-style-underlined .wpcf7-form-control-wrap select {
+	padding-inline-end: 1.25em;
+	background-position:
+		calc(100% - 5px) 50%,
+		100% 50%;
+}
+
+.cf7at-form.is-style-underlined .wpcf7-form-control-wrap :is(input, select, textarea):focus-visible,
+.cf7at-form.is-style-underlined .cf7at-picker__display[aria-expanded="true"] {
+	outline: 0;
+	box-shadow: 0 1px 0 0 var(--_accent);
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Range slider                                                               */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-range {
+	--_track-height: 0.375rem;
+	--_fill: calc(var(--_thumb) / 2 + (100% - var(--_thumb)) * var(--cf7at-progress, 0));
+
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: --spacing(1) --spacing(4);
+	font-weight: 400;
+}
+
+.cf7at-range__track {
+	display: block;
+}
+
+.cf7at-range__input {
+	display: block;
+	width: 100%;
+	height: var(--_thumb);
+	margin: 0;
+	background: transparent;
+	cursor: pointer;
+	appearance: none;
+}
+
+.cf7at-range__input::-webkit-slider-runnable-track {
+	height: var(--_track-height);
+	border-radius: 999px;
+	background: linear-gradient(to right, var(--_accent) var(--_fill), color-mix(in srgb, currentcolor 14%, transparent) var(--_fill));
+}
+
+.cf7at-range__input::-moz-range-track {
+	height: var(--_track-height);
+	border-radius: 999px;
+	background: color-mix(in srgb, currentcolor 14%, transparent);
+}
+
+.cf7at-range__input::-moz-range-progress {
+	height: var(--_track-height);
+	border-radius: 999px;
+	background: var(--_accent);
+}
+
+.cf7at-range__input::-webkit-slider-thumb {
+	width: var(--_thumb);
+	height: var(--_thumb);
+	margin-top: calc((var(--_track-height) - var(--_thumb)) / 2);
+	border: 2px solid var(--_accent);
+	border-radius: 50%;
+	background: var(--_on-accent);
+	box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+	appearance: none;
+	transition: transform 150ms;
+}
+
+.cf7at-range__input::-moz-range-thumb {
+	box-sizing: border-box;
+	width: var(--_thumb);
+	height: var(--_thumb);
+	border: 2px solid var(--_accent);
+	border-radius: 50%;
+	background: var(--_on-accent);
+	box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+}
+
+.cf7at-range__input:active::-webkit-slider-thumb {
+	transform: scale(1.1);
+}
+
+.cf7at-range__input:focus-visible {
+	outline: 2px solid var(--_accent);
+	outline-offset: 4px;
+	border-radius: 999px;
+}
+
+.cf7at-range__output {
+	min-width: 3.5em;
+	padding: --spacing(1) --spacing(2.5);
+	border-radius: 999px;
+	background: var(--_muted);
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	font-size: --theme(--text-sm);
+	line-height: --theme(--text-sm--line-height);
+	font-weight: --theme(--font-weight-semibold);
+}
+
+.cf7at-range__ticks {
+	position: relative;
+	grid-column: 1;
+	height: 1.5em;
+	opacity: 0.7;
+	font-size: --theme(--text-xs);
+	line-height: --theme(--text-xs--line-height);
+}
+
+.cf7at-range__tick {
+	position: absolute;
+	top: 0;
+	left: calc(var(--_thumb) / 2 + (100% - var(--_thumb)) * var(--cf7at-tick));
+	translate: calc(var(--cf7at-tick) * -100%) 0;
+	white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Date and time pickers                                                      */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-picker {
+	position: relative;
+	display: block;
+}
+
+.cf7at-picker.is-enhanced::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: var(--_pad-x);
+	width: 1.125em;
+	height: 1.125em;
+	translate: 0 -50%;
+	background-color: currentcolor;
+	opacity: 0.6;
+	pointer-events: none;
+	mask: var(--_icon) center / contain no-repeat;
+}
+
+.cf7at-date {
+	--_icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E");
+}
+
+.cf7at-time {
+	--_icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+}
+
+.cf7at-picker__display,
+.cf7at-form .wpcf7-form-control-wrap input.cf7at-picker__display {
+	padding-inline-end: calc(var(--_pad-x) + 1.75em);
+	cursor: pointer;
+}
+
+.cf7at-picker__display[aria-disabled="true"] {
+	cursor: default;
+}
+
+.cf7at-form.is-style-underlined .wpcf7-form-control-wrap input.cf7at-picker__display {
+	padding-inline-end: 1.75em;
+}
+
+.cf7at-form.is-style-underlined .cf7at-picker.is-enhanced::after {
+	right: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Popovers                                                                   */
+
+/* -------------------------------------------------------------------------- */
+
+.cf7at-popover {
+	position: fixed;
+	inset: auto;
+	box-sizing: border-box;
+	margin: 0;
+	padding: --spacing(2);
+	border: 1px solid color-mix(in srgb, var(--_surface-text) 14%, transparent);
+	border-radius: calc(var(--_radius) + 4px);
+	background: var(--_surface);
+	color: var(--_surface-text);
+	box-shadow: 0 12px 32px -8px rgb(0 0 0 / 0.25), 0 2px 6px rgb(0 0 0 / 0.08);
+	font-weight: 400;
+	font-size: --theme(--text-base);
+	line-height: --theme(--text-base--line-height);
+}
+
+.cf7at-popover__footer {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: --spacing(1);
+	padding-top: --spacing(2);
+	border-top: 1px solid color-mix(in srgb, currentcolor 10%, transparent);
+}
+
+.cf7at-popover__action {
+	padding: --spacing(1) --spacing(2.5);
+	border: 0;
+	border-radius: var(--_radius);
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	font-size: --theme(--text-sm);
+	line-height: --theme(--text-sm--line-height);
+	font-weight: --theme(--font-weight-medium);
+}
+
+.cf7at-popover__action:hover {
+	background: color-mix(in srgb, currentcolor 8%, transparent);
+}
+
+/* Calendar (Cally web components, styled through their CSS parts) */
+
+.cf7at-calendar {
+	--color-accent: var(--_accent);
+	--color-text-on-accent: var(--_on-accent);
+
+	display: block;
+}
+
+.cf7at-calendar::part(header) {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: --spacing(2);
+}
+
+.cf7at-calendar::part(heading) {
+	font-weight: --theme(--font-weight-semibold);
+}
+
+.cf7at-calendar::part(button) {
+	display: grid;
+	place-items: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0;
+	border: 0;
+	border-radius: var(--_radius);
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+}
+
+.cf7at-calendar::part(button):hover {
+	background: color-mix(in srgb, currentcolor 8%, transparent);
+}
+
+.cf7at-calendar::part(button):focus-visible {
+	outline: 2px solid var(--_accent);
+	outline-offset: 1px;
+}
+
+.cf7at-calendar::part(disabled) {
+	opacity: 0.3;
+	cursor: default;
+}
+
+.cf7at-calendar__heading {
+	font-weight: --theme(--font-weight-semibold);
+}
+
+.cf7at-calendar__menus {
+	display: flex;
+	gap: --spacing(1);
+}
+
+/* Read by screen readers, but the heading above already shows the month. */
+.cf7at-calendar calendar-month::part(heading),
+.cf7at-calendar calendar-select-month::part(label),
+.cf7at-calendar calendar-select-year::part(label) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.cf7at-calendar calendar-select-month::part(select),
+.cf7at-calendar calendar-select-year::part(select) {
+	padding: --spacing(1) --spacing(1.5);
+	border: 1px solid color-mix(in srgb, currentcolor 20%, transparent);
+	border-radius: var(--_radius);
+	background: var(--_surface);
+	color: inherit;
+	font: inherit;
+	font-size: --theme(--text-sm);
+	line-height: --theme(--text-sm--line-height);
+	font-weight: --theme(--font-weight-semibold);
+}
+
+.cf7at-calendar calendar-month::part(th) {
+	padding-bottom: --spacing(1);
+	font-weight: 400;
+	opacity: 0.6;
+	font-size: --theme(--text-xs);
+	line-height: --theme(--text-xs--line-height);
+}
+
+.cf7at-calendar calendar-month::part(button) {
+	width: 2.375rem;
+	height: 2.375rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-variant-numeric: tabular-nums;
+	cursor: pointer;
+	font-size: --theme(--text-sm);
+	line-height: --theme(--text-sm--line-height);
+}
+
+.cf7at-calendar calendar-month::part(button):hover {
+	background: color-mix(in srgb, currentcolor 8%, transparent);
+}
+
+.cf7at-calendar calendar-month::part(button):focus-visible {
+	outline: 2px solid var(--_accent);
+	outline-offset: 1px;
+}
+
+.cf7at-calendar calendar-month::part(today) {
+	box-shadow: inset 0 0 0 1px currentcolor;
+	font-weight: --theme(--font-weight-semibold);
+}
+
+.cf7at-calendar calendar-month::part(selected) {
+	background: var(--_accent);
+	color: var(--_on-accent);
+	box-shadow: none;
+}
+
+.cf7at-calendar calendar-month::part(outside) {
+	opacity: 0.4;
+}
+
+.cf7at-calendar calendar-month::part(button):disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+}
+
+/*
+ * The focused day has its own ring; themes would otherwise outline
+ * the whole month.
+ */
+.cf7at-calendar :is(
+	calendar-month,
+	calendar-select-month,
+	calendar-select-year
+):focus {
+	outline: 0;
+}
+
+.cf7at-calendar calendar-month::part(disallowed) {
+	opacity: 0.3;
+	cursor: not-allowed;
+	text-decoration: line-through;
+}
+
+.cf7at-calendar calendar-month::part(disallowed):hover {
+	background: transparent;
+}
+
+/* Time list */
+
+.cf7at-time__list {
+	min-width: 9rem;
+	max-height: 16rem;
+	margin: 0;
+	padding: 0;
+	overflow-y: auto;
+	list-style: none;
+	scrollbar-width: thin;
+}
+
+.cf7at-time__option {
+	margin: 0;
+	padding: --spacing(2) --spacing(3);
+	border-radius: var(--_radius);
+	font-variant-numeric: tabular-nums;
+	cursor: pointer;
+}
+
+.cf7at-time__option:hover,
+.cf7at-time__option.is-active {
+	background: color-mix(in srgb, currentcolor 8%, transparent);
+}
+
+.cf7at-time__option[aria-selected="true"] {
+	background: var(--_accent);
+	color: var(--_on-accent);
+	font-weight: --theme(--font-weight-semibold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.cf7at-form *,
+	.cf7at-range *,
+	.cf7at-popover * {
+		transition: none !important;
+	}
+}
