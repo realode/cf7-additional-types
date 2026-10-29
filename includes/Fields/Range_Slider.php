@@ -404,31 +404,38 @@ final class Range_Slider extends Field {
 
 		echo '<br /><small>' . esc_html__( 'Only used when there are no step labels.', 'cf7-additional-types' ) . '</small></fieldset>';
 
-		echo '<fieldset><legend>' . esc_html__( 'Number display', 'cf7-additional-types' ) . '</legend>';
-
-		printf(
-			'<label>%1$s <input type="text" size="4" maxlength="3" pattern="[A-Za-z]{3}" placeholder="EUR" data-tag-part="option" data-tag-option="currency:" /></label> ',
-			esc_html__( 'Currency', 'cf7-additional-types' )
+		$this->print_option_input(
+			[
+				'legend'      => __( 'Currency', 'cf7-additional-types' ),
+				'option'      => 'currency:',
+				'description' => __( 'A code such as EUR, USD or GBP. The number is formatted for the site language.', 'cf7-additional-types' ),
+				'atts'        => [
+					'maxlength'   => 3,
+					'pattern'     => '[A-Za-z]{3}',
+					'placeholder' => 'EUR',
+				],
+			]
 		);
 
 		// Form-tag options only allow these characters.
 		$option_pattern = '[\-+*=0-9a-zA-Z:.!?#$&@_\/|%]*';
 
-		foreach (
+		$this->print_option_input(
 			[
-				'prefix:' => __( 'Prefix', 'cf7-additional-types' ),
-				'suffix:' => __( 'Suffix', 'cf7-additional-types' ),
-			] as $option => $label
-		) {
-			printf(
-				'<label>%1$s <input type="text" size="6" pattern="%2$s" data-tag-part="option" data-tag-option="%3$s" /></label> ',
-				esc_html( $label ),
-				esc_attr( $option_pattern ),
-				esc_attr( $option )
-			);
-		}
+				'legend' => __( 'Prefix', 'cf7-additional-types' ),
+				'option' => 'prefix:',
+				'atts'   => [ 'pattern' => $option_pattern ],
+			]
+		);
 
-		echo '<br /><small>' . esc_html__( 'Currency: a code such as EUR, USD or GBP, formatted for the site language. Prefix and suffix: plain text such as % or km, with an underscore for a space.', 'cf7-additional-types' ) . '</small></fieldset>';
+		$this->print_option_input(
+			[
+				'legend'      => __( 'Suffix', 'cf7-additional-types' ),
+				'option'      => 'suffix:',
+				'description' => __( 'Plain text such as % or km. Use an underscore for a space.', 'cf7-additional-types' ),
+				'atts'        => [ 'pattern' => $option_pattern ],
+			]
+		);
 
 		$this->print_option_checkbox(
 			__( 'Labels', 'cf7-additional-types' ),

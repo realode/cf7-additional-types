@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CF7 Additional Types 3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cf7-additional-types/\n"
-"PO-Revision-Date: 2026-10-29 17:33+0000\n"
+"PO-Revision-Date: 2026-10-29 17:37+0000\n"
 "Last-Translator: Janis Freimann <janis.freimann@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -75,26 +75,23 @@ msgstr "Этот день недоступен. Выберите другую д
 msgid "A date (YYYY-MM-DD) or a relative date such as today, +1_week or -18_years."
 msgstr "Дата (ГГГГ-ММ-ДД) или относительная дата, например today, +1_week или -18_years."
 
-#: includes/Fields/Date_Picker.php:281
-#: includes/Fields/Time_Picker.php:201
-msgid "Range"
-msgstr "Диапазон"
+#: includes/Fields/Date_Picker.php:283
+msgid "Earliest date"
+msgstr "Самая ранняя дата"
 
-#: includes/Fields/Date_Picker.php:285
-#: includes/Fields/Time_Picker.php:205
-msgid "Earliest"
-msgstr "Не раньше"
+#: includes/Fields/Date_Picker.php:294
+msgid "Latest date"
+msgstr "Самая поздняя дата"
 
-#: includes/Fields/Date_Picker.php:286
-#: includes/Fields/Time_Picker.php:206
-msgid "Latest"
-msgstr "Не позже"
+#: includes/Fields/Date_Picker.php:304
+msgid "A date or a relative date, as above."
+msgstr "Дата или относительная дата, как указано выше."
 
-#: includes/Fields/Date_Picker.php:302
+#: includes/Fields/Date_Picker.php:307
 msgid "Available days"
 msgstr "Доступные дни"
 
-#: includes/Fields/Date_Picker.php:304
+#: includes/Fields/Date_Picker.php:309
 msgid "Weekdays only (no Saturdays or Sundays)."
 msgstr "Только будние дни (без суббот и воскресений)."
 
@@ -166,32 +163,32 @@ msgstr "Шаг"
 msgid "Only used when there are no step labels."
 msgstr "Используется только без подписей шагов."
 
-#: includes/Fields/Range_Slider.php:407
-msgid "Number display"
-msgstr "Отображение числа"
-
-#: includes/Fields/Range_Slider.php:411
+#: includes/Fields/Range_Slider.php:409
 msgid "Currency"
 msgstr "Валюта"
 
-#: includes/Fields/Range_Slider.php:419
+#: includes/Fields/Range_Slider.php:411
+msgid "A code such as EUR, USD or GBP. The number is formatted for the site language."
+msgstr "Код, например EUR, USD или GBP. Число форматируется по языку сайта."
+
+#: includes/Fields/Range_Slider.php:425
 msgid "Prefix"
 msgstr "Префикс"
 
-#: includes/Fields/Range_Slider.php:420
+#: includes/Fields/Range_Slider.php:433
 msgid "Suffix"
 msgstr "Суффикс"
 
-#: includes/Fields/Range_Slider.php:431
-msgid "Currency: a code such as EUR, USD or GBP, formatted for the site language. Prefix and suffix: plain text such as % or km, with an underscore for a space."
-msgstr "Валюта: код, например EUR, USD или GBP, — значение форматируется по языку сайта. Префикс и суффикс: простой текст, например % или km; пробел обозначается подчёркиванием."
+#: includes/Fields/Range_Slider.php:435
+msgid "Plain text such as % or km. Use an underscore for a space."
+msgstr "Простой текст, например % или km. Пробел обозначается подчёркиванием."
 
-#: includes/Fields/Range_Slider.php:434
+#: includes/Fields/Range_Slider.php:441
 #: build/editor.js:1
 msgid "Labels"
 msgstr "Подписи"
 
-#: includes/Fields/Range_Slider.php:436
+#: includes/Fields/Range_Slider.php:443
 msgid "Show the labels (or the min and max) under the slider."
 msgstr "Показывать подписи (или минимум и максимум) под ползунком."
 
@@ -234,6 +231,18 @@ msgstr "Время позже допустимого"
 #: includes/Fields/Time_Picker.php:171
 msgid "This time is too late."
 msgstr "Это время слишком позднее."
+
+#: includes/Fields/Time_Picker.php:201
+msgid "Range"
+msgstr "Диапазон"
+
+#: includes/Fields/Time_Picker.php:205
+msgid "Earliest"
+msgstr "Не раньше"
+
+#: includes/Fields/Time_Picker.php:206
+msgid "Latest"
+msgstr "Не позже"
 
 #: includes/Fields/Time_Picker.php:220
 msgid "Interval"

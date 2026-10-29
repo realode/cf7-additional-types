@@ -278,25 +278,30 @@ final class Date_Picker extends Picker_Field {
 	protected function render_tag_generator_fields( WPCF7_TagGeneratorGenerator $tgg, array $options ): void {
 		$date_help = __( 'A date (YYYY-MM-DD) or a relative date such as today, +1_week or -18_years.', 'cf7-additional-types' );
 
-		echo '<fieldset><legend>' . esc_html__( 'Range', 'cf7-additional-types' ) . '</legend>';
-
-		foreach (
+		$this->print_option_input(
 			[
-				'min:' => __( 'Earliest', 'cf7-additional-types' ),
-				'max:' => __( 'Latest', 'cf7-additional-types' ),
-			] as $option => $label
-		) {
-			printf(
-				'<label>%1$s <input type="text" size="12" pattern="\S*" placeholder="%2$s" data-tag-part="option" data-tag-option="%3$s" /></label> ',
-				esc_html( $label ),
-				esc_attr( 'min:' === $option ? '-18_years' : '+1_year' ),
-				esc_attr( $option )
-			);
-		}
+				'legend' => __( 'Earliest date', 'cf7-additional-types' ),
+				'option' => 'min:',
+				'atts'   => [
+					'pattern'     => '\S*',
+					'placeholder' => 'today',
+				],
+			]
+		);
 
-		echo '<br /><small>' . esc_html( $date_help ) . '</small></fieldset>';
+		$this->print_option_input(
+			[
+				'legend'      => __( 'Latest date', 'cf7-additional-types' ),
+				'option'      => 'max:',
+				'description' => $date_help,
+				'atts'        => [
+					'pattern'     => '\S*',
+					'placeholder' => '+6_months',
+				],
+			]
+		);
 
-		$this->print_default_value_field( $tgg, $date_help );
+		$this->print_default_value_field( $tgg, __( 'A date or a relative date, as above.', 'cf7-additional-types' ) );
 
 		$this->print_option_checkbox(
 			__( 'Available days', 'cf7-additional-types' ),

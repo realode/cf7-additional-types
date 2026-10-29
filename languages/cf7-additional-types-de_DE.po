@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CF7 Additional Types 3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cf7-additional-types/\n"
-"PO-Revision-Date: 2026-10-29 17:33+0000\n"
+"PO-Revision-Date: 2026-10-29 17:37+0000\n"
 "Last-Translator: Janis Freimann <janis.freimann@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -75,26 +75,23 @@ msgstr "Dieser Tag ist nicht verfügbar. Bitte wähle ein anderes Datum."
 msgid "A date (YYYY-MM-DD) or a relative date such as today, +1_week or -18_years."
 msgstr "Ein Datum (JJJJ-MM-TT) oder ein relatives Datum wie today, +1_week oder -18_years."
 
-#: includes/Fields/Date_Picker.php:281
-#: includes/Fields/Time_Picker.php:201
-msgid "Range"
-msgstr "Bereich"
+#: includes/Fields/Date_Picker.php:283
+msgid "Earliest date"
+msgstr "Frühestes Datum"
 
-#: includes/Fields/Date_Picker.php:285
-#: includes/Fields/Time_Picker.php:205
-msgid "Earliest"
-msgstr "Frühestens"
+#: includes/Fields/Date_Picker.php:294
+msgid "Latest date"
+msgstr "Spätestes Datum"
 
-#: includes/Fields/Date_Picker.php:286
-#: includes/Fields/Time_Picker.php:206
-msgid "Latest"
-msgstr "Spätestens"
+#: includes/Fields/Date_Picker.php:304
+msgid "A date or a relative date, as above."
+msgstr "Ein Datum oder ein relatives Datum, wie oben."
 
-#: includes/Fields/Date_Picker.php:302
+#: includes/Fields/Date_Picker.php:307
 msgid "Available days"
 msgstr "Verfügbare Tage"
 
-#: includes/Fields/Date_Picker.php:304
+#: includes/Fields/Date_Picker.php:309
 msgid "Weekdays only (no Saturdays or Sundays)."
 msgstr "Nur Werktage (keine Samstage und Sonntage)."
 
@@ -166,32 +163,32 @@ msgstr "Schrittweite"
 msgid "Only used when there are no step labels."
 msgstr "Wird nur ohne Stufenbeschriftungen verwendet."
 
-#: includes/Fields/Range_Slider.php:407
-msgid "Number display"
-msgstr "Zahlenanzeige"
-
-#: includes/Fields/Range_Slider.php:411
+#: includes/Fields/Range_Slider.php:409
 msgid "Currency"
 msgstr "Währung"
 
-#: includes/Fields/Range_Slider.php:419
+#: includes/Fields/Range_Slider.php:411
+msgid "A code such as EUR, USD or GBP. The number is formatted for the site language."
+msgstr "Ein Code wie EUR, USD oder GBP. Die Zahl wird für die Sprache der Website formatiert."
+
+#: includes/Fields/Range_Slider.php:425
 msgid "Prefix"
 msgstr "Präfix"
 
-#: includes/Fields/Range_Slider.php:420
+#: includes/Fields/Range_Slider.php:433
 msgid "Suffix"
 msgstr "Suffix"
 
-#: includes/Fields/Range_Slider.php:431
-msgid "Currency: a code such as EUR, USD or GBP, formatted for the site language. Prefix and suffix: plain text such as % or km, with an underscore for a space."
-msgstr "Währung: ein Code wie EUR, USD oder GBP, formatiert für die Sprache der Website. Präfix und Suffix: einfacher Text wie % oder km, mit einem Unterstrich für ein Leerzeichen."
+#: includes/Fields/Range_Slider.php:435
+msgid "Plain text such as % or km. Use an underscore for a space."
+msgstr "Einfacher Text wie % oder km. Verwende einen Unterstrich für ein Leerzeichen."
 
-#: includes/Fields/Range_Slider.php:434
+#: includes/Fields/Range_Slider.php:441
 #: build/editor.js:1
 msgid "Labels"
 msgstr "Beschriftungen"
 
-#: includes/Fields/Range_Slider.php:436
+#: includes/Fields/Range_Slider.php:443
 msgid "Show the labels (or the min and max) under the slider."
 msgstr "Beschriftungen (oder Minimum und Maximum) unter dem Regler anzeigen."
 
@@ -234,6 +231,18 @@ msgstr "Die Uhrzeit liegt nach dem erlaubten Zeitraum"
 #: includes/Fields/Time_Picker.php:171
 msgid "This time is too late."
 msgstr "Diese Uhrzeit ist zu spät."
+
+#: includes/Fields/Time_Picker.php:201
+msgid "Range"
+msgstr "Bereich"
+
+#: includes/Fields/Time_Picker.php:205
+msgid "Earliest"
+msgstr "Frühestens"
+
+#: includes/Fields/Time_Picker.php:206
+msgid "Latest"
+msgstr "Spätestens"
 
 #: includes/Fields/Time_Picker.php:220
 msgid "Interval"
