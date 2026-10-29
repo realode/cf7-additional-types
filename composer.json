@@ -1,9 +1,23 @@
 {
-    "require-dev": {
-        "brainmaestro/composer-git-hooks": "^2.6",
-        "wp-coding-standards/wpcs": "^2.0",
-        "phpcompatibility/phpcompatibility-wp": "^2.0",
-        "xwp/wp-dev-lib": "^1.1",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
-    }
+	"description": "Block editor styling and additional field types for Contact Form 7.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.2",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"wp-coding-standards/wpcs": "^3.4"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"lint:fix": "phpcbf"
+	}
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ruleset name="CF7 Additional Types">
+	<description>Coding standards for CF7 Additional Types.</description>
+
+	<file>.</file>
+
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="cache" value=".phpcs-cache"/>
+	<arg name="parallel" value="8"/>
+	<arg value="sp"/>
+
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_wp_version" value="6.7"/>
+
+	<rule ref="WordPress">
+		<!-- The code base uses short array syntax. -->
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+	</rule>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="cf7-additional-types"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="cf7at"/>
+				<element value="CF7AT"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Classes in includes/ follow PSR-4 file naming for the autoloader. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>/includes/*</exclude-pattern>
+	</rule>
+</ruleset>
