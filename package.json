@@ -14,9 +14,9 @@
 	],
 	"scripts": {
 		"build": "npm run build:js && npm run build:css",
-		"build:js": "wp-scripts build fields=./src/fields/index.js --output-path=build",
+		"build:js": "wp-scripts build editor=./src/editor/index.js fields=./src/fields/index.js --output-path=build",
 		"build:css": "tailwindcss --input src/styles/style.css --output build/style.css --minify",
-		"start": "npm run build:css && concurrently -k -n js,css \"wp-scripts start fields=./src/fields/index.js --output-path=build\" \"tailwindcss --input src/styles/style.css --output build/style.css --watch\"",
+		"start": "npm run build:css && concurrently -k -n js,css \"wp-scripts start editor=./src/editor/index.js fields=./src/fields/index.js --output-path=build\" \"tailwindcss --input src/styles/style.css --output build/style.css --watch\"",
 		"lint:js": "wp-scripts lint-js src",
 		"lint:css": "wp-scripts lint-style \"src/**/*.css\"",
 		"lint:php": "composer lint",
