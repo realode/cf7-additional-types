@@ -1,55 +1,406 @@
+# Translation of CF7 Additional Types in de_DE
+# This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Project-Id-Version: CF7 Additional Types\n"
-"POT-Creation-Date: 2016-06-26 11:29+0200\n"
-"PO-Revision-Date: 2016-06-26 14:33+0200\n"
+"Project-Id-Version: CF7 Additional Types 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cf7-additional-types/\n"
+"PO-Revision-Date: 2026-10-29 17:33+0000\n"
+"Last-Translator: Janis Freimann <janis.freimann@gmail.com>\n"
 "Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: cf7-additional-types.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Last-Translator: Janis Freimann <janis.freimann@gmail.com>\n"
-"Language: de_DE\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: cf7-additional-types\n"
 
-#: cf7-additional-types.php:81
-#, php-format
-msgid "You need to install and activate the Contact Form 7 Plugin to use %s."
-msgstr ""
-"Um das Plugin %s zu nutzen, brauchen Sie das Plugin Contact Form 7 zu "
-"installieren und aktivieren."
-
-#: cf7-additional-types.php:93
-#, php-format
-msgid ""
-"This version of %s is broken or incompatible with your WordPress "
-"installation. You can try to reinstall it from the WordPress repository."
-msgstr ""
-"Diese Version des Plugins %s ist fehlerhaft oder inkompatibel mit Ihrer "
-"WordPress Installation. Bitte versuchen Sie das Plugin durch den WordPress "
-"Plugin Katalog neu zu installieren."
-
-#. Plugin Name of the plugin/theme
+#. Plugin Name of the plugin
+#: cf7-additional-types.php
 msgid "CF7 Additional Types"
 msgstr "CF7 Extra Feld-Typen"
 
-#. Plugin URI of the plugin/theme
-#. Author URI of the plugin/theme
-msgid "http://jankim.com/"
+#. Plugin URI of the plugin
+#: cf7-additional-types.php
+msgid "https://github.com/meostudio/cf7-additional-types"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid "Additional input field types for Contact Form 7."
-msgstr "Zusätzliche Eingabefeld-Typen für Contact Form 7."
+#. Description of the plugin
+#: cf7-additional-types.php
+msgid "Design Contact Form 7 forms right in the block editor, and add a range slider, date picker and time picker to your forms."
+msgstr "Gestalte Contact-Form-7-Formulare direkt im Block-Editor und füge deinen Formularen einen Schieberegler, eine Datumsauswahl und eine Zeitauswahl hinzu."
 
-#. Author of the plugin/theme
-msgid "Janis Freimann"
+#. Author of the plugin
+#: cf7-additional-types.php
+msgid "Janis Freimann, meo.studio"
 msgstr ""
+
+#. Author URI of the plugin
+#: cf7-additional-types.php
+msgid "https://janfrei.me/"
+msgstr ""
+
+#: includes/Fields/Date_Picker.php:46
+msgid "date picker"
+msgstr "Datumsauswahl"
+
+#: includes/Fields/Date_Picker.php:47
+msgid "Date picker"
+msgstr "Datumsauswahl"
+
+#: includes/Fields/Date_Picker.php:48
+msgid "Date picker form-tag generator"
+msgstr "Formular-Tag-Generator: Datumsauswahl"
+
+#: includes/Fields/Date_Picker.php:49
+msgid "Generates a form-tag for a date field with a calendar that follows the site language and week start."
+msgstr "Erzeugt ein Formular-Tag für ein Datumsfeld mit einem Kalender, der Sprache und Wochenbeginn der Website übernimmt."
+
+#: includes/Fields/Date_Picker.php:247
+msgid "Date picker value is not a valid date"
+msgstr "Der Wert der Datumsauswahl ist kein gültiges Datum"
+
+#: includes/Fields/Date_Picker.php:248
+msgid "Please choose a valid date."
+msgstr "Bitte wähle ein gültiges Datum."
+
+#: includes/Fields/Date_Picker.php:251
+msgid "Date picker value falls on a day that cannot be chosen"
+msgstr "Der Wert der Datumsauswahl fällt auf einen nicht wählbaren Tag"
+
+#: includes/Fields/Date_Picker.php:252
+msgid "This day is not available. Please choose another date."
+msgstr "Dieser Tag ist nicht verfügbar. Bitte wähle ein anderes Datum."
+
+#: includes/Fields/Date_Picker.php:279
+msgid "A date (YYYY-MM-DD) or a relative date such as today, +1_week or -18_years."
+msgstr "Ein Datum (JJJJ-MM-TT) oder ein relatives Datum wie today, +1_week oder -18_years."
+
+#: includes/Fields/Date_Picker.php:281
+#: includes/Fields/Time_Picker.php:201
+msgid "Range"
+msgstr "Bereich"
+
+#: includes/Fields/Date_Picker.php:285
+#: includes/Fields/Time_Picker.php:205
+msgid "Earliest"
+msgstr "Frühestens"
+
+#: includes/Fields/Date_Picker.php:286
+#: includes/Fields/Time_Picker.php:206
+msgid "Latest"
+msgstr "Spätestens"
+
+#: includes/Fields/Date_Picker.php:302
+msgid "Available days"
+msgstr "Verfügbare Tage"
+
+#: includes/Fields/Date_Picker.php:304
+msgid "Weekdays only (no Saturdays or Sundays)."
+msgstr "Nur Werktage (keine Samstage und Sonntage)."
+
+#: includes/Fields/Picker_Field.php:130
+msgid "Default value"
+msgstr "Standardwert"
+
+#: includes/Fields/Picker_Field.php:131
+msgid "Use this text as the placeholder."
+msgstr "Diesen Text als Platzhalter verwenden."
+
+#: includes/Fields/Range_Slider.php:49
+msgid "range slider"
+msgstr "Schieberegler"
+
+#: includes/Fields/Range_Slider.php:50
+msgid "Range slider"
+msgstr "Schieberegler"
+
+#: includes/Fields/Range_Slider.php:51
+msgid "Range slider form-tag generator"
+msgstr "Formular-Tag-Generator: Schieberegler"
+
+#: includes/Fields/Range_Slider.php:52
+msgid "Generates a form-tag for a slider. Enter step labels for a slider with named steps, or leave them empty for a numeric slider."
+msgstr "Erzeugt ein Formular-Tag für einen Schieberegler. Gib Beschriftungen für einen Regler mit benannten Stufen ein oder lass sie für einen numerischen Regler leer."
+
+#: includes/Fields/Range_Slider.php:343
+msgid "Range slider value is not one of its steps"
+msgstr "Der Wert des Schiebereglers entspricht keiner seiner Stufen"
+
+#: includes/Fields/Range_Slider.php:344
+msgid "Please choose one of the available options."
+msgstr "Bitte wähle eine der verfügbaren Optionen."
+
+#: includes/Fields/Range_Slider.php:374
+msgid "Step labels"
+msgstr "Stufenbeschriftungen"
+
+#: includes/Fields/Range_Slider.php:376
+msgid "One label per line. Leave empty for a numeric slider."
+msgstr "Eine Beschriftung pro Zeile. Für einen numerischen Regler leer lassen."
+
+#: includes/Fields/Range_Slider.php:381
+msgid "Default"
+msgstr "Standard"
+
+#: includes/Fields/Range_Slider.php:384
+msgid "With labels: the position of the preselected label (1 = first). Without labels: the starting number."
+msgstr "Mit Beschriftungen: die Position der vorausgewählten Beschriftung (1 = erste). Ohne Beschriftungen: der Startwert."
+
+#: includes/Fields/Range_Slider.php:389
+msgid "Numeric range"
+msgstr "Zahlenbereich"
+
+#: includes/Fields/Range_Slider.php:393
+msgid "Min"
+msgstr "Min"
+
+#: includes/Fields/Range_Slider.php:394
+msgid "Max"
+msgstr "Max"
+
+#: includes/Fields/Range_Slider.php:395
+msgid "Step"
+msgstr "Schrittweite"
+
+#: includes/Fields/Range_Slider.php:405
+msgid "Only used when there are no step labels."
+msgstr "Wird nur ohne Stufenbeschriftungen verwendet."
+
+#: includes/Fields/Range_Slider.php:407
+msgid "Number display"
+msgstr "Zahlenanzeige"
+
+#: includes/Fields/Range_Slider.php:411
+msgid "Currency"
+msgstr "Währung"
+
+#: includes/Fields/Range_Slider.php:419
+msgid "Prefix"
+msgstr "Präfix"
+
+#: includes/Fields/Range_Slider.php:420
+msgid "Suffix"
+msgstr "Suffix"
+
+#: includes/Fields/Range_Slider.php:431
+msgid "Currency: a code such as EUR, USD or GBP, formatted for the site language. Prefix and suffix: plain text such as % or km, with an underscore for a space."
+msgstr "Währung: ein Code wie EUR, USD oder GBP, formatiert für die Sprache der Website. Präfix und Suffix: einfacher Text wie % oder km, mit einem Unterstrich für ein Leerzeichen."
+
+#: includes/Fields/Range_Slider.php:434
+#: build/editor.js:1
+msgid "Labels"
+msgstr "Beschriftungen"
+
+#: includes/Fields/Range_Slider.php:436
+msgid "Show the labels (or the min and max) under the slider."
+msgstr "Beschriftungen (oder Minimum und Maximum) unter dem Regler anzeigen."
+
+#: includes/Fields/Time_Picker.php:49
+msgid "time picker"
+msgstr "Zeitauswahl"
+
+#: includes/Fields/Time_Picker.php:50
+msgid "Time picker"
+msgstr "Zeitauswahl"
+
+#: includes/Fields/Time_Picker.php:51
+msgid "Time picker form-tag generator"
+msgstr "Formular-Tag-Generator: Zeitauswahl"
+
+#: includes/Fields/Time_Picker.php:52
+msgid "Generates a form-tag for a time field with a list of times in the site’s time format."
+msgstr "Erzeugt ein Formular-Tag für ein Zeitfeld mit einer Liste von Uhrzeiten im Zeitformat der Website."
+
+#: includes/Fields/Time_Picker.php:162
+msgid "Time picker value is not a valid time"
+msgstr "Der Wert der Zeitauswahl ist keine gültige Uhrzeit"
+
+#: includes/Fields/Time_Picker.php:163
+msgid "Please choose a valid time."
+msgstr "Bitte wähle eine gültige Uhrzeit."
+
+#: includes/Fields/Time_Picker.php:166
+msgid "Time is earlier than the time picker allows"
+msgstr "Die Uhrzeit liegt vor dem erlaubten Zeitraum"
+
+#: includes/Fields/Time_Picker.php:167
+msgid "This time is too early."
+msgstr "Diese Uhrzeit ist zu früh."
+
+#: includes/Fields/Time_Picker.php:170
+msgid "Time is later than the time picker allows"
+msgstr "Die Uhrzeit liegt nach dem erlaubten Zeitraum"
+
+#: includes/Fields/Time_Picker.php:171
+msgid "This time is too late."
+msgstr "Diese Uhrzeit ist zu spät."
+
+#: includes/Fields/Time_Picker.php:220
+msgid "Interval"
+msgstr "Intervall"
+
+#: includes/Fields/Time_Picker.php:223
+msgid "Minutes between the times in the list. Default: 30."
+msgstr "Minuten zwischen den Uhrzeiten in der Liste. Standard: 30."
+
+#: includes/Fields/Time_Picker.php:231
+msgid "A time in 24-hour format, e.g. 14:30."
+msgstr "Eine Uhrzeit im 24-Stunden-Format, z. B. 14:30."
+
+#: includes/Plugin.php:150
+msgid "Choose date"
+msgstr "Datum auswählen"
+
+#: includes/Plugin.php:151
+msgid "Choose time"
+msgstr "Uhrzeit auswählen"
+
+#: includes/Plugin.php:152
+msgid "Clear"
+msgstr "Leeren"
+
+#: includes/Plugin.php:153
+msgid "Previous month"
+msgstr "Vorheriger Monat"
+
+#: includes/Plugin.php:154
+msgid "Next month"
+msgstr "Nächster Monat"
+
+#: includes/Plugin.php:155
+msgid "Month"
+msgstr "Monat"
+
+#: includes/Plugin.php:156
+msgid "Year"
+msgstr "Jahr"
+
+#. translators: %s: minimum Contact Form 7 version number.
+#: includes/Plugin.php:201
+#, php-format
+msgid "CF7 Additional Types needs Contact Form 7 %s or newer. Please update Contact Form 7 to use its fields and form styles."
+msgstr "CF7 Additional Types benötigt Contact Form 7 %s oder neuer. Bitte aktualisiere Contact Form 7, um die Felder und Formularstile zu nutzen."
+
+#: includes/Styler/Block_Styler.php:100
+msgctxt "form style"
+msgid "Default"
+msgstr "Standard"
+
+#: includes/Styler/Block_Styler.php:101
+msgctxt "form style"
+msgid "Filled"
+msgstr "Gefüllt"
+
+#: includes/Styler/Block_Styler.php:102
+msgctxt "form style"
+msgid "Underlined"
+msgstr "Unterstrichen"
+
+#: includes/Styler/Block_Styler.php:103
+msgctxt "form style"
+msgid "Unstyled"
+msgstr "Ohne Gestaltung"
+
+#: build/editor.js:1
+msgid "Accent"
+msgstr "Akzent"
+
+#: build/editor.js:1
+msgid "Field text"
+msgstr "Feldtext"
+
+#: build/editor.js:1
+msgid "Field background"
+msgstr "Feldhintergrund"
+
+#: build/editor.js:1
+msgid "Field border"
+msgstr "Feldrahmen"
+
+#: build/editor.js:1
+msgid "Button text"
+msgstr "Button-Text"
+
+#: build/editor.js:1
+msgid "Button background"
+msgstr "Button-Hintergrund"
+
+#: build/editor.js:1
+msgid "Field radius"
+msgstr "Eckenradius der Felder"
+
+#: build/editor.js:1
+msgid "Field border width"
+msgstr "Rahmenbreite der Felder"
+
+#: build/editor.js:1
+msgid "Space between fields"
+msgstr "Abstand zwischen Feldern"
+
+#: build/editor.js:1
+msgid "Form fields"
+msgstr "Formularfelder"
+
+#: build/editor.js:1
+msgid "Field size"
+msgstr "Feldgröße"
+
+#: build/editor.js:1
+msgid "S"
+msgstr "S"
+
+#: build/editor.js:1
+msgid "Small"
+msgstr "Klein"
+
+#: build/editor.js:1
+msgid "M"
+msgstr "M"
+
+#: build/editor.js:1
+msgid "Medium"
+msgstr "Mittel"
+
+#: build/editor.js:1
+msgid "L"
+msgstr "L"
+
+#: build/editor.js:1
+msgid "Large"
+msgstr "Groß"
+
+#: build/editor.js:1
+msgid "Button style"
+msgstr "Button-Stil"
+
+#: build/editor.js:1
+msgid "Use the theme’s button style"
+msgstr "Button-Stil des Themes verwenden"
+
+#: build/editor.js:1
+msgid "Off: the button uses the accent color."
+msgstr "Aus: Der Button verwendet die Akzentfarbe."
+
+#: build/editor.js:1
+msgid "Button width"
+msgstr "Button-Breite"
+
+#: build/editor.js:1
+msgid "Full-width button"
+msgstr "Button in voller Breite"
+
+#: build/editor.js:1
+msgid "The form preview could not be loaded."
+msgstr "Die Formularvorschau konnte nicht geladen werden."
+
+#: build/editor.js:1
+msgid "Edit this contact form"
+msgstr "Dieses Kontaktformular bearbeiten"
+
+#: build/editor.js:1
+msgid "Form settings"
+msgstr "Formulareinstellungen"
+
+#: build/editor.js:1
+msgid "Preview"
+msgstr "Vorschau"

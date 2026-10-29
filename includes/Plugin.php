@@ -85,7 +85,18 @@ final class Plugin {
 
 		( new Styler\Block_Styler() )->hook();
 
+		add_action( 'init', [ $this, 'load_translations' ], 1 );
 		add_action( 'init', [ $this, 'register_assets' ], 5 );
+	}
+
+	/**
+	 * Loads the translations bundled in /languages.
+	 *
+	 * Installs from WordPress.org get language packs from translate.wordpress.org
+	 * automatically; this covers installs from GitHub or a ZIP file.
+	 */
+	public function load_translations(): void {
+		load_plugin_textdomain( 'cf7-additional-types', false, dirname( plugin_basename( PLUGIN_FILE ) ) . '/languages' );
 	}
 
 	/**

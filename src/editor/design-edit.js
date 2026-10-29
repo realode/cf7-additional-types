@@ -55,10 +55,7 @@ function PreviewEdit( { attributes, onChangeForm } ) {
 						</p>
 					) }
 					<Button variant="secondary" onClick={ onChangeForm }>
-						{ __(
-							'Change form or form attributes',
-							'cf7-additional-types'
-						) }
+						{ __( 'Form settings', 'cf7-additional-types' ) }
 					</Button>
 				</PanelBody>
 			</InspectorControls>
